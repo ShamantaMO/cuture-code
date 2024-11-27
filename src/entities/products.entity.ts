@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Product{
@@ -11,5 +11,12 @@ export class Product{
     @Column({type: "int"})
     price: number
 
-    @Column({type: "enum", enum: })
+    @CreateDateColumn()
+    createdAt: Date
+
+    @UpdateDateColumn()
+    updatedAt: Date
+
+    @DeleteDateColumn({type: Date, default: null})
+    deleteAt: Date
 }
