@@ -14,7 +14,7 @@ export class ResponseUserDoc {
   @ApiProperty({
     description: 'Primeiro nome do usuário',
     type: String,
-    example: 'João Pedro',
+    example: 'Maria Clara',
     name: 'First Name',
   })
   firstName: string;
@@ -22,7 +22,7 @@ export class ResponseUserDoc {
   @ApiProperty({
     description: 'Último nome do usuário',
     type: String,
-    example: 'Santos Oliveira',
+    example: 'Silva Pereira',
     name: 'Last Name',
   })
   lastName: string;
@@ -30,7 +30,7 @@ export class ResponseUserDoc {
   @ApiProperty({
     description: 'Email do usuário',
     type: String,
-    example: 'joaopedro.santos@exemplo.com',
+    example: 'mariaclara.silva@exemplo.com',
     name: 'Email',
   })
   email: string;

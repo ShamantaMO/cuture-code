@@ -5,7 +5,7 @@ export const UsersDecorator = createParamDecorator((data: unknown, context: Exec
         const {user} = context.switchToHttp().getRequest()
         console.log('Request UsersDecorator', user)
         if(!user){
-            throw new UnauthorizedException('User not found in request')
+            throw new UnauthorizedException('Usuário não encontrado na requisição')
         }
         return user
     }

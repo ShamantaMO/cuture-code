@@ -1,5 +1,5 @@
 import { PartialType } from "@nestjs/swagger";
-import { UserRegisterDoc } from "src/docs/user-register.doc";
+import { UserRegisterDoc } from "src/auth/docs/user-register.doc";
 
 
 

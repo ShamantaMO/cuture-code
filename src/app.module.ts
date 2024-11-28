@@ -1,23 +1,27 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { EnumModule } from './enum/enum.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { ProductsModule } from './products/products.module';
+import { JewelsController } from './jewels/jewels.controller';
+import { JewelsModule } from './jewels/jewels.module';
+import { JewelsService } from './jewels/jewels.service';
+
 
 @Module({
   imports: [UsersModule, DatabaseModule, EnumModule, AuthModule,
     ConfigModule.forRoot({
-      isGlobal: true, // Torna o ConfigModule disponível globalmente
-      envFilePath: '.env', // Caminho para o arquivo de variáveis de ambiente
+      isGlobal: true, 
+      envFilePath: '.env', 
     }),
-    ProductsModule
+    ProductsModule,
+    JewelsModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [JewelsController],
+  providers: [JewelsService],
+
   
 })
 export class AppModule {}
