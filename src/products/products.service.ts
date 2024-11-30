@@ -68,7 +68,7 @@ export class ProductsService {
     user.productsPurchased.push(product);
 
   
-    product.buyer.push(user);
+    product.buyer = user;
     product.inStock = false;
 
     try {

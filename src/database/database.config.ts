@@ -6,7 +6,6 @@ import * as entities from '../entities/index'
 
 export default <TypeOrmModuleAsyncOptions>{
     inject: [ConfigService],
-
     useFactory: async (
         configService: ConfigService,
     ): Promise<TypeOrmModuleOptions> => {

@@ -46,8 +46,7 @@ export class JewelsService {
           price: true,
           active: true,
           name: true,
-          description: true,
-          transactionType: true,
+          TransactionType: true,
         },
       });
 

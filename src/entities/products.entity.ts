@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { User } from "./users.entity";
 
 @Entity()
 export class Product{
@@ -11,6 +12,9 @@ export class Product{
     @Column({type: "int"})
     price: number
 
+    @Column({type: "bit", default: 0})
+    inStock: boolean
+
     @CreateDateColumn()
     createdAt: Date
 
@@ -19,4 +23,7 @@ export class Product{
 
     @DeleteDateColumn({type: Date, default: null})
     deleteAt: Date
+
+    @ManyToOne(() => User, (user)=> user.id)
+    buyer: User
 }

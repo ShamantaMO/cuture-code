@@ -1,7 +1,7 @@
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { usersMock } from "./users.mock";
-import { updateUserMock } from "./update-user.mock";
 import { User } from "src/entities";
+import { usersMock } from "../users.mock";
+import { updateUserMock } from "./update-user.mock";
 
 export const userRepositoryMock  = {
     provide: getRepositoryToken(User),
