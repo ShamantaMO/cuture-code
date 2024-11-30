@@ -1,12 +1,12 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { UsersController } from "./users.controller";
-import { userServiceMock } from "src/testing/user-service.mock";
 import { AuthGuard } from "src/guards/auth.guard";
 import { authGuardMock } from "src/testing/auth/auth-guard.mock";
 import { RolesGuard } from "src/guards/role.guard";
 import { rolesGuardMock } from "src/testing/auth/roles-guard.mock";
 import { userDecoratorMock } from "src/testing/user/user-decorator.mock";
 import { updateUserMock } from "src/testing/user/update-user.mock";
+import { userServiceMock } from "src/testing/user/user-service.mock";
 
 describe('UserController', () => {
   let userController: UsersController;

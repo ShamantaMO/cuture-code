@@ -1,10 +1,9 @@
 import { DocumentBuilder } from "@nestjs/swagger";
 
 export const swaggerConfig = new DocumentBuilder()
-  .setTitle('Documentação da API Culture Code')
+  .setTitle('Documentação do Culture Code')
   .setDescription(
-    `Este sistema de gamificação foi desenvolvido para engajar e recompensar os usuários de uma empresa através de um mecanismo de compra e gestão de produtos e joias.`,
+    'Sistema de gamificação'
   )
-  
-  .addTag('CultureCode') 
+  .addTag('cultureCode')
   .build();

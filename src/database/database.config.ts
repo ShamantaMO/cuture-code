@@ -18,6 +18,7 @@ export default <TypeOrmModuleAsyncOptions>{
             database: configService.get('DB_NAME'),
             entities: Object.values(entities),
             synchronize: true,
+            ssl: true
         }
     }
 }
