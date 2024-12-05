@@ -14,10 +14,10 @@ export class User{
     @Column({type:"varchar", length: 25})
     lastName: string
     
-    @Column({type:"varchar", length: 25, unique:true})
+    @Column({type:"varchar", length: 250, unique:true})
     email: string
 
-    @Column({type:"varchar", length: 8, select:false})
+    @Column({type:"varchar", length: 500, select:false})
     password:string
 
     @Column({type:"enum", enum:RoleEnum, default:RoleEnum.user})

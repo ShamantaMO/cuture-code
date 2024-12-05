@@ -13,13 +13,13 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
-
+    
     if (!token) {
       throw new ForbiddenException('token not found');
     }
 
     try {
-      const payload = await this.jwtService.verifyAsync(token, { secret: this.configService.get('JWT_SECRET') });
+      const payload = await this.jwtService.verifyAsync(token, { secret: this.configService.get('JWT_SECRET'), ignoreExpiration: true });
 
       request.user = payload;
     } catch (error) {
@@ -30,8 +30,8 @@ export class AuthGuard implements CanActivate {
   }
 
   private extractTokenFromHeader(request: Request): string {
-    
-    const [type, token] = request.headers?.authorization?.split('') || []
+    console.log(request.headers?.authorization)
+    const [type, token] = request.headers?.authorization?.split(' ') || []
 
     return type === 'Bearer' ? token : null;
   }
