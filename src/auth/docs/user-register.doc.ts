@@ -35,7 +35,7 @@ export class UserRegisterDoc {
     password: string;
   
     @ApiProperty({
-      description: 'The user role',
+      description: 'A função do usuário',
       enum: RoleEnum,
       example: RoleEnum.user,
       title: 'Role',

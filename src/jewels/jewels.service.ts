@@ -82,7 +82,7 @@ export class JewelsService {
       const jewel = await this.jewelsRepository.findOne({ where: { id } });
 
       if (!jewel) {
-        throw new NotFoundException(`This jewels with id: ${id} not found!`);
+        throw new NotFoundException(`Essa joia com o ID: ${id} não foi encontrada!`);
       }
 
       return jewel;

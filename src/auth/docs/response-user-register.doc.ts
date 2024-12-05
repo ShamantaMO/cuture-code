@@ -3,7 +3,7 @@ import { RoleEnum } from "src/enum/role.enum";
 
 export class UserDoc {
     @ApiProperty({
-      description: 'User identification',
+      description: 'Identificação do usuário',
       type: Number,
       example: 13,
       name: 'Id',
@@ -11,7 +11,7 @@ export class UserDoc {
     id: number;
   
     @ApiProperty({
-      description: 'User first name',
+      description: 'Primeiro nome',
       type: String,
       example: 'Maria Clara',
       title: 'First Name',
@@ -19,7 +19,7 @@ export class UserDoc {
     firstName: string;
   
     @ApiProperty({
-      description: 'User last name',
+      description: 'Sobrenome',
       type: String,
       example: 'Silva Pereira',
       title: 'Last Name',
@@ -28,7 +28,7 @@ export class UserDoc {
     lastName: string;
   
     @ApiProperty({
-      description: 'User email',
+      description: 'Email do usuario',
       type: String,
       example: 'mariaclara.silva@exemplo.com',
       title: 'Email',
@@ -36,7 +36,7 @@ export class UserDoc {
     email: string;
   
     @ApiProperty({
-      description: 'User password',
+      description: 'Senha do usuario',
       type: String,
       example: 'senhaSegura123',
       title: 'Password',
@@ -44,7 +44,7 @@ export class UserDoc {
     password: string;
   
     @ApiProperty({
-      description: 'User role',
+      description: 'Função do usuário',
       enum: RoleEnum,
       example: RoleEnum.user,
       title: 'Role',
@@ -53,7 +53,7 @@ export class UserDoc {
     role: RoleEnum;
   
     @ApiProperty({
-      description: 'Whether the user\'s email is verified',
+      description: 'Se o e-mail do usuário está verificado',
       type: Boolean,
       example: true,
       name: 'Email Verified',
@@ -61,7 +61,7 @@ export class UserDoc {
     emailVerified: boolean;
   
     @ApiProperty({
-      description: 'Coins that the user owns',
+      description: 'Moedas que o usuário possui',
       type: Number,
       example: 10,
       name: 'Coins',
@@ -69,7 +69,7 @@ export class UserDoc {
     coins: number;
   
     @ApiProperty({
-      description: 'User creation date',
+      description: 'Data de criação do usuário',
       type: Date,
       example: '2024-01-01T00:00:00.000Z',
       name: 'Created At',
@@ -77,7 +77,7 @@ export class UserDoc {
     createdAt: Date;
   
     @ApiProperty({
-      description: 'User update date',
+      description: 'Data de atualização do usuário',
       type: Date,
       example: '2024-01-15T12:00:00.000Z',
       name: 'Updated At',
@@ -85,7 +85,7 @@ export class UserDoc {
     updatedAt: Date;
   
     @ApiProperty({
-      description: 'User deletion date, if deleted',
+      description: 'Data de exclusão do usuário, se excluído',
       type: Date,
       example: null,
       name: 'Deleted At',

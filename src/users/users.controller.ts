@@ -30,9 +30,9 @@ import { UpdateUserDoc } from "./docs/update-users.doc";
 import { UpdateUsersDto } from "./dtos/updateUsers.dto";
 
 @ApiBearerAuth()
-@ApiTags('Usuário')
+@ApiTags('users')
 @UseGuards(AuthGuard, RolesGuard)
-@Controller('usuario')
+@Controller('users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 

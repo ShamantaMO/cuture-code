@@ -43,7 +43,7 @@ export class AuthService {
       const user = await this.findOne(body.email);
       console.log(user);
       if (!user || !(await bcrypt.compare(body.password, user.password))) {
-        throw new UnauthorizedException('invalid credentials');
+        throw new UnauthorizedException('Credencial invalida');
       }
 
       const tokenPayload = {

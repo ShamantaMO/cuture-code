@@ -22,8 +22,8 @@ export class JewelsController {
   @ApiParam({type: Number, example: 2, name: 'userId'})
   @ApiParam({type: Number, example: 9, name: 'jewelId'})
   @ApiCreatedResponse({type: ResponseDistribuiteJewelsDoc})
-  @ApiNotFoundResponse({example: 'User or Jewel not found or jewel is inactive'})
-  @ApiForbiddenResponse({example: {message: "token not found"}})
+  @ApiNotFoundResponse({example: 'Usuário ou joia não encontrada, ou a joia está inativa'})
+  @ApiForbiddenResponse({example: {message: "token não encontrado"}})
   @Roles(RoleEnum.admin)
   @Post('assign/:userId/jewels/:jewelId')
   async distribuiteJewels(@Param('userId', ParseIntPipe) userId: number, @Param('jewelId', ParseIntPipe) jewelId: number){

@@ -15,7 +15,7 @@ export class ResponseCreateProductDoc extends CreateProductDoc {
     description: 'Data de criação do produto',
     type: Date,
     example: '2024-11-15T14:30:00.000Z',
-    name: 'Criado Em',
+    name: 'Criate At',
   })
   createdAt: Date;
 
@@ -23,7 +23,7 @@ export class ResponseCreateProductDoc extends CreateProductDoc {
     description: 'Data de atualização do produto',
     type: Date,
     example: '2024-11-16T10:00:00.000Z',
-    name: 'Atualizado Em',
+    name: 'Update At',
   })
   updatedAt: Date;
 
@@ -31,7 +31,7 @@ export class ResponseCreateProductDoc extends CreateProductDoc {
     description: 'Data de exclusão do produto',
     type: Date,
     example: null,
-    name: 'Excluído Em',
+    name: 'Delete At',
   })
   deletedAt: Date;
 }
