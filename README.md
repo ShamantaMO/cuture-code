@@ -1,30 +1,11 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Documentação do Culture Code
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+**Version**: 1.0
 
-## Description
+**Description**: Sistema de gamificação
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+
 
 ## Project setup
 
@@ -58,42 +39,228 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+# DER
+![Diagram](der.jpg)
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+## Endpoints
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### `/users/perfil`
+#### GET
+- **OperationId**: UsersController_profile
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'token não encontrado'}
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+### `/users`
+#### GET
+- **OperationId**: UsersController_findAll
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'token não encontrado'}
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### `/users/{id}`
+#### GET
+- **OperationId**: UsersController_userById
+- **Parameters**:
+  - `id` (path): No description
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'token não encontrado'}
+#### PATCH
+- **OperationId**: UsersController_update
+- **Parameters**:
+  - `id` (path): No description
+- **Request Body**:
+  - Content-Type: `application/json`
+    - Schema: {'$ref': '#/components/schemas/UpdateUserDoc'}
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **401**: 
+    - `application/json`: Você não tem permissão para atualizar outros usuários.
+  - **403**: 
+    - `application/json`: {'message': 'token não encontrado'}
+#### DELETE
+- **OperationId**: UsersController_delete
+- **Parameters**:
+  - `id` (path): No description
+- **Responses**:
+  - **200**: 
+    - `application/json`: {'message': 'ok'}
+  - **401**: 
+    - `application/json`: Você não tem permissão para atualizar outros usuários.
+  - **403**: 
+    - `application/json`: {'message': 'token não encontrado'}
 
-## Resources
+### `/auth/register`
+#### POST
+- **OperationId**: AuthController_register
+- **Request Body**:
+  - Content-Type: `application/json`
+    - Schema: {'$ref': '#/components/schemas/UserRegisterDoc'}
+- **Responses**:
+  - **201**: 
+    - `application/json`: No example
+  - **400**: 
+    - `application/json`: usuario existente.
 
-Check out a few resources that may come in handy when working with NestJS:
+### `/auth/login`
+#### POST
+- **OperationId**: AuthController_login
+- **Request Body**:
+  - Content-Type: `application/json`
+    - Schema: {'$ref': '#/components/schemas/LoginDoc'}
+- **Responses**:
+  - **201**: 
+    - `application/json`: No example
+  - **401**: 
+    - `application/json`: Cedencial Invalida
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### `/auth/find`
+#### GET
+- **OperationId**: AuthController_findAllProducts
+- **Parameters**:
+  - `price` (query): No description
+  - `name` (query): No description
+  - `limit` (query): No description
+  - `page` (query): No description
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **400**: 
+    - `application/json`: página e limite obrigatórios
 
-## Support
+### `/products`
+#### POST
+- **OperationId**: ProductsController_create
+- **Request Body**:
+  - Content-Type: `application/json`
+    - Schema: {'$ref': '#/components/schemas/CreateProductDoc'}
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **400**: 
+    - `application/json`: Produto ja existe
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### `/products/reward/{id}`
+#### POST
+- **OperationId**: ProductsController_reward
+- **Parameters**:
+  - `id` (path): No description
+- **Responses**:
+  - **201**: 
+    - `application/json`: No example
+  - **400**: 
+    - `application/json`: Insufficient jewels
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
+  - **404**: 
+    - `application/json`: Este produto com o ID: 7 não foi encontrado ou está sem estoque
 
-## Stay in touch
+### `/products/{id}`
+#### GET
+- **OperationId**: ProductsController_productById
+- **Parameters**:
+  - `id` (path): No description
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
+  - **404**: 
+    - `application/json`: Este produto com o ID: 8 não foi encontrado ou está sem estoque
+#### PATCH
+- **OperationId**: ProductsController_update
+- **Parameters**:
+  - `id` (path): No description
+- **Request Body**:
+  - Content-Type: `application/json`
+    - Schema: {'$ref': '#/components/schemas/UpdateProductDoc'}
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
+  - **404**: 
+    - `application/json`: Este produto com o ID: 9 não foi encontrado ou está sem estoque
+#### DELETE
+- **OperationId**: ProductsController_delete
+- **Parameters**:
+  - `id` (path): No description
+- **Responses**:
+  - **200**: 
+    - `application/json`: {'message': 'Produto deletado'}
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
+  - **404**: 
+    - `application/json`: Este produto com o ID: 3 não foi encontrado ou está sem estoque
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### `/jewels/assign/{jewelId}/{userId}`
+#### POST
+- **OperationId**: JewelsController_distribuiteJewels
+- **Parameters**:
+  - `jewelId` (path): No description
+  - `userId` (path): No description
+- **Responses**:
+  - **201**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'token não encontrado'}
+  - **404**: 
+    - `application/json`: Usuário ou joia não encontrada, ou a joia está inativa
 
-## License
+### `/jewels`
+#### POST
+- **OperationId**: JewelsController_create
+- **Request Body**:
+  - Content-Type: `application/json`
+    - Schema: {'$ref': '#/components/schemas/CreateJewelsDoc'}
+- **Responses**:
+  - **201**: 
+    - `application/json`: No example
+  - **400**: 
+    - `application/json`: Esta joia já existe.
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
+#### GET
+- **OperationId**: JewelsController_findAll
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### `/jewels/{id}`
+#### GET
+- **OperationId**: JewelsController_jewelById
+- **Parameters**:
+  - `id` (path): No description
+- **Responses**:
+  - **201**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
+  - **404**: 
+    - `application/json`: Este produto com o ID: 9 não foi encontrado!
+#### PATCH
+- **OperationId**: JewelsController_update
+- **Parameters**:
+  - `id` (path): No description
+- **Request Body**:
+  - Content-Type: `application/json`
+    - Schema: {'$ref': '#/components/schemas/UpdateJewelsDoc'}
+- **Responses**:
+  - **200**: 
+    - `application/json`: No example
+  - **403**: 
+    - `application/json`: {'message': 'Token não encontrado'}
+  - **404**: 
+    - `application/json`: Este produto com o ID: 9 não foi encontrado!
