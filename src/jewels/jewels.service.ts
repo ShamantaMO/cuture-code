@@ -20,11 +20,14 @@ export class JewelsService {
         throw new BadRequestException('Esta joia já existe');
       }
 
-      const newJewel = this.jewelsRepository.create(body);
-
       console.log('---------------------------------------------------------')
       console.log('salvando joia')
+      console.log(body)
+
+      const newJewel = this.jewelsRepository.create(body);
+
       console.log(newJewel)
+      console.log('---------------------------------------------------------')
       
       await this.jewelsRepository.save(newJewel);
 
@@ -50,7 +53,7 @@ export class JewelsService {
           price: true,
           active: true,
           name: true,
-          TransactionType: true,
+          transactionType: true,
         },
       });
 

@@ -10,11 +10,14 @@ export class Jewels{
     @Column({type:"varchar", length:25, unique: true})
     name: string
 
+    @Column({type:"varchar", length:250})
+    description: string
+
     @Column({type:"int"})
     price: number
 
     @Column({type:"enum", enum: TransactionEnum, default: TransactionEnum.Gift})
-    TransactionType: TransactionEnum
+    transactionType: TransactionEnum
 
     @Column({type: "bool", default: true})
     active: boolean

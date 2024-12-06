@@ -26,6 +26,8 @@ export class AuthService {
         throw new BadRequestException('Usuário já existe');
       }
 
+      const saltRounds = 10;
+      body.password = await bcrypt.hash(body.password, saltRounds);
       const newUser = this.usersRepository.create(body);
 
       await this.usersRepository.save(newUser);
