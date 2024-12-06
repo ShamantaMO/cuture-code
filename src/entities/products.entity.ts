@@ -24,7 +24,7 @@ export class Product{
     @DeleteDateColumn({type: Date, default: null})
     deleteAt: Date
 
-    @ManyToMany(() => User, (user)=> user.id)
+    @ManyToMany(() => User, (user)=> user.productsPurchased)
     @JoinTable()
     buyer: User
 }

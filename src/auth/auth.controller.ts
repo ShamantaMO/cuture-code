@@ -5,6 +5,8 @@ import { LoginDto } from 'src/auth/dtos/login.dto';
 import { ResponseFindAllProductsDoc } from 'src/auth/docs/response-allProducts.doc';
 import { userRegisterDto } from 'src/auth/dtos/user-register.dto';
 import { UserDoc } from './docs/response-user-register.doc';
+import { UserRegisterDoc } from './docs/user-register.doc';
+import { LoginDoc } from './docs/login.doc';
 
 
 
@@ -13,7 +15,7 @@ import { UserDoc } from './docs/response-user-register.doc';
 export class AuthController {
     constructor(private readonly authService: AuthService){}
 
-    @ApiBody({ type: userRegisterDto })
+    @ApiBody({ type: UserRegisterDoc })
     @ApiCreatedResponse({ type: UserDoc })
     @ApiBadRequestResponse({ example: 'usuario existente.' })
     @Post('register')
@@ -21,7 +23,7 @@ export class AuthController {
       return await this.authService.register(body);
     }
 
-    @ApiBody({type: LoginDto})
+    @ApiBody({type: LoginDoc})
     @ApiCreatedResponse({type:UserDoc})
     @ApiUnauthorizedResponse({example: 'Cedencial Invalida'})
     @Post('login')
