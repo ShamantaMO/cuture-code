@@ -5,10 +5,11 @@ import { productsRepositoryMock } from "src/testing/product/products-repository.
 import { userRepositoryMock } from "src/testing/user/user-repository.mock";
 import { AuthGuard } from "src/guards/auth.guard";
 import { authGuardMock } from "src/testing/auth/auth-guard.mock";
-import { request } from "http";
 import { createProductMock } from "src/testing/product/create-product.mock";
 import { productsMock } from "src/testing/product/products-mock";
 import { updateProductMock } from "src/testing/product/update-product.mock";
+import * as request from 'supertest'
+
 
 describe('Módulo de Produtos', () => {
     let app: INestApplication;
