@@ -1,5 +1,5 @@
 import { RoleEnum } from "src/enum/role.enum";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Jewels } from "./jewels.entity";
 import { Product } from "./products.entity";
 
@@ -23,7 +23,7 @@ export class User{
     @Column({type:"enum", enum:RoleEnum, default:RoleEnum.user})
     role?: RoleEnum
 
-    @Column({type:"int", default: 0})
+    @Column({type:"int", default: 100})
     coins: number
     
     @CreateDateColumn()
@@ -35,9 +35,11 @@ export class User{
     @DeleteDateColumn({type: Date, default: null})
     deleteAt: Date
 
-    @OneToMany(() => Jewels, (jewels) => jewels.user)
+    @ManyToMany(() => Jewels, (jewels) => jewels.user)
+    @JoinTable()
     jewels: Jewels[]
 
-    @OneToMany(()=> Product, (product) => product.buyer)
+    @ManyToMany(()=> Product, (product) => product.buyer)
+    @JoinTable()
     productsPurchased: Product[]
 }

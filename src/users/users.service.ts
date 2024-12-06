@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { UsersDecoratorDTO } from './dtos/users-decorator.dto';
 import { UpdateUsersDto } from './dtos/updateUsers.dto';
 import { RoleEnum } from 'src/enum/role.enum';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -92,6 +93,10 @@ export class UsersService {
         );
       }
 
+      const saltRounds = 10; 
+      body.password = await bcrypt.hash(body.password, saltRounds);
+      const newUser = this.usersRepository.create(body);
+      
       await this.usersRepository.update(id, body);
 
       return await this.usersRepository.findOneBy({ id });

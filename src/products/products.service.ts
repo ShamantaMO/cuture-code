@@ -26,7 +26,7 @@ export class ProductsService {
     if (await this.findName(body.name)) {
       throw new BadRequestException('Produto já existe');
     }
-
+    
     const newProduct = this.productsRepository.create(body);
 
     try {
@@ -68,7 +68,8 @@ export class ProductsService {
     user.productsPurchased.push(product);
 
   
-    product.buyer = user;
+    //product.buyers.push(user);
+    product.buyer = (user);
     product.inStock = false;
 
     try {

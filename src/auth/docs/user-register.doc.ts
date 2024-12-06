@@ -5,7 +5,7 @@ export class UserRegisterDoc {
     @ApiProperty({
       description: 'Primeiro nome',
       type: String,
-      example: 'Maria Clara',
+      example: 'Shamanta',
       title: 'First Name',
     })
     firstName: string;
@@ -13,7 +13,7 @@ export class UserRegisterDoc {
     @ApiProperty({
       description: 'Sobrenome',
       type: String,
-      example: 'Silva Pereira',
+      example: 'Oliveira',
       title: 'Last Name',
     })
     lastName: string;
@@ -21,7 +21,7 @@ export class UserRegisterDoc {
     @ApiProperty({
       description: 'Email do usuario',
       type: String,
-      example: 'mariaclara.silva@exemplo.com',
+      example: 'shammy@gmail',
       title: 'Email',
     })
     email: string;
@@ -29,7 +29,7 @@ export class UserRegisterDoc {
     @ApiProperty({
       description: 'Senha',
       type: String,
-      example: 'senhaSegura123',
+      example: '1234',
       title: 'Password',
     })
     password: string;

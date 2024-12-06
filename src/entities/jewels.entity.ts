@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { TransactionEnum } from "src/enum/transaction.enum";
 import { User } from "./users.entity";
 
@@ -19,7 +19,7 @@ export class Jewels{
     @Column({type: "bool", default: true})
     active: boolean
 
-    @ManyToOne(() => User, (user) => user.jewels, {onDelete: 'CASCADE'})
+    @ManyToMany(() => User, (user) => user.jewels)
     user: User
 
     @CreateDateColumn()

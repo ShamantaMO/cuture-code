@@ -25,8 +25,8 @@ export class JewelsController {
   @ApiNotFoundResponse({example: 'Usuário ou joia não encontrada, ou a joia está inativa'})
   @ApiForbiddenResponse({example: {message: "token não encontrado"}})
   @Roles(RoleEnum.admin)
-  @Post('assign/:userId/jewels/:jewelId')
-  async distribuiteJewels(@Param('userId', ParseIntPipe) userId: number, @Param('jewelId', ParseIntPipe) jewelId: number){
+  @Post('assign/:jewelId/:userId')
+  async distribuiteJewels(@Param('jewelId', ParseIntPipe) jewelId: number, @Param('userId', ParseIntPipe) userId: number){
     return await this.jewelsService.distribuiteJewels(userId, jewelId)
   }
 
@@ -37,6 +37,7 @@ export class JewelsController {
   @Roles(RoleEnum.admin)
   @Post('create')
   async create(@Body() body: CreateJewelsDto) {
+    console.log(body)
     return await this.jewelsService.create(body);
   }
 

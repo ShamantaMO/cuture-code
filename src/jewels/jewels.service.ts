@@ -22,6 +22,10 @@ export class JewelsService {
 
       const newJewel = this.jewelsRepository.create(body);
 
+      console.log('---------------------------------------------------------')
+      console.log('salvando joia')
+      console.log(newJewel)
+      
       await this.jewelsRepository.save(newJewel);
 
       return newJewel;

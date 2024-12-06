@@ -13,7 +13,7 @@ export class UserDoc {
     @ApiProperty({
       description: 'Primeiro nome',
       type: String,
-      example: 'Maria Clara',
+      example: 'Shamanta',
       title: 'First Name',
     })
     firstName: string;
@@ -21,7 +21,7 @@ export class UserDoc {
     @ApiProperty({
       description: 'Sobrenome',
       type: String,
-      example: 'Silva Pereira',
+      example: 'Oliveira',
       title: 'Last Name',
       required: false,
     })
@@ -30,7 +30,7 @@ export class UserDoc {
     @ApiProperty({
       description: 'Email do usuario',
       type: String,
-      example: 'mariaclara.silva@exemplo.com',
+      example: 'shammy@gmail.com',
       title: 'Email',
     })
     email: string;
@@ -38,7 +38,7 @@ export class UserDoc {
     @ApiProperty({
       description: 'Senha do usuario',
       type: String,
-      example: 'senhaSegura123',
+      example: '1234',
       title: 'Password',
     })
     password: string;
