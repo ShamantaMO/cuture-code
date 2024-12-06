@@ -12,7 +12,7 @@ export class Product{
     @Column({type: "int"})
     price: number
 
-    @Column({type: "bit", default: 0})
+    @Column({type: "bool", default: true})
     inStock: boolean
 
     @CreateDateColumn()

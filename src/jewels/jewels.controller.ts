@@ -35,7 +35,7 @@ export class JewelsController {
   @ApiForbiddenResponse({example: {message: "Token não encontrado"}})
   @ApiBadRequestResponse({example: 'Esta joia já existe.'})
   @Roles(RoleEnum.admin)
-  @Post('create')
+  @Post()
   async create(@Body() body: CreateJewelsDto) {
     console.log(body)
     return await this.jewelsService.create(body);

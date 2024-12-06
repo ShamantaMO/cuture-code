@@ -7,7 +7,7 @@ export class CreateProductDoc {
     description: 'Nome do produto',
     type: String,
     example: 'Teclado Sem Fio',
-    name: 'Nome',
+    name: 'name',
   })
   name: string;
 
@@ -15,7 +15,7 @@ export class CreateProductDoc {
     description: 'Preço do produto',
     type: Number,
     example: 89,
-    name: 'Preço',
+    name: 'price',
   })
   price: number;
 
@@ -23,7 +23,7 @@ export class CreateProductDoc {
     description: 'Categoria do produto',
     enum: CategoryEnum,
     example: CategoryEnum.tech,
-    name: 'Categoria',
+    name: 'category',
   })
   category: CategoryEnum;
 
@@ -31,7 +31,7 @@ export class CreateProductDoc {
     description: 'Se o produto está em estoque',
     type: Boolean,
     example: true,
-    name: 'Em Estoque',
+    name: 'inStock',
   })
   inStock: boolean;
 }

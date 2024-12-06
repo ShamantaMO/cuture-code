@@ -25,7 +25,7 @@ export class ProductsController {
   @ApiBadRequestResponse({example: 'Produto ja existe'})
   @ApiForbiddenResponse({example: {message: "Token não encontrado"}})
   @Roles(RoleEnum.admin)
-  @Post('create')
+  @Post()
   async create(@Body() body: CreateProdutsDto){
     return await this.productsService.create(body)
   }
