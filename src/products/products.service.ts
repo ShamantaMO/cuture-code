@@ -44,15 +44,9 @@ export class ProductsService {
   
   async reward(productId: number, userDeco: UsersDecoratorDTO) {
     const product = await this.productsRepository.findOne({
-      where: { id: productId },
+      where: { id: productId, inStock: true },
       relations: ['buyer'],
     });
-
-    if (!product || !product.inStock) {
-      throw new NotFoundException(
-        `Produto com o id: ${productId} não encontrado ou sem estoque`,
-      );
-    }
 
     const user = await this.usersRepository.findOne({
       where: { id: userDeco.userId },
@@ -60,20 +54,22 @@ export class ProductsService {
     });
 
     if (!user) {
-      throw new NotFoundException(`Usuário com o id: ${userDeco.userId} não encontrado`);
+      throw new NotFoundException(`Usuário ${userDeco.userId} não encontrado`);
+    }
+
+    if (!product || !product.inStock) {
+      throw new NotFoundException(
+        `Produto com o id: ${productId} não encontrado ou sem estoque`,
+      );
     }
 
     if (user.coins < product.price) {
       throw new BadRequestException('Moedas insuficientes para comprar o produto');
     }
 
-    
     user.coins -= product.price;
     user.productsPurchased.push(product);
 
-  
-    //product.buyers.push(user);
-    product.buyer = (user);
     product.inStock = false;
 
     try {
