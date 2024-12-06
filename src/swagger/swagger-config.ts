@@ -6,4 +6,6 @@ export const swaggerConfig = new DocumentBuilder()
     'Sistema de gamificação'
   )
   .addTag('cultureCode')
+  .setVersion('1.0')
+  .addBearerAuth()
   .build();

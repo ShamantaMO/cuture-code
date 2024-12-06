@@ -1,11 +1,10 @@
 import { Body, Controller, Get, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiOkResponse, ApiQuery, ApiResponse, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
-import { UserRegisterDoc } from 'src/auth/docs/user-register.doc';
-import { UserDoc } from 'src/auth/docs/response-user-register.doc';
-import { LoginDto } from 'src/dtos/login.dto';
+import { LoginDto } from 'src/auth/dtos/login.dto';
 import { ResponseFindAllProductsDoc } from 'src/auth/docs/response-allProducts.doc';
-import { userRegisterDto } from 'src/dtos/user-register.dto';
+import { userRegisterDto } from 'src/auth/dtos/user-register.dto';
+import { UserDoc } from './docs/response-user-register.doc';
 
 
 

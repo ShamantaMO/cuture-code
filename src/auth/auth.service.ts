@@ -1,8 +1,8 @@
 import { BadRequestException, HttpException, Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { InjectRepository } from "@nestjs/typeorm";
-import { LoginDto } from "src/dtos/login.dto";
-import { userRegisterDto } from "src/dtos/user-register.dto";
+import { LoginDto } from "src/auth/dtos/login.dto";
+import { userRegisterDto } from "src/auth/dtos/user-register.dto";
 import { Product, User } from "src/entities";
 import { UsersService } from "src/users/users.service";
 import { ILike, Repository } from "typeorm";
