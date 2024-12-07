@@ -4,7 +4,7 @@ export class LoginDoc{
     @ApiProperty({
         description: 'Email do usuario',
         type: String,
-        example: 'mariaclara.silva@exemplo.com',
+        example: 'usuario@teste.com',
         title: 'Email',
       })
       email: string;
@@ -12,7 +12,7 @@ export class LoginDoc{
       @ApiProperty({
         description: 'Senha',
         type: String,
-        example: 'senhaSegura123',
+        example: 'P@$$w0rd',
         title: 'Password',
       })
       password: string;

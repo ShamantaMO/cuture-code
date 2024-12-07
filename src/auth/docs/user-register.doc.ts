@@ -21,7 +21,7 @@ export class UserRegisterDoc {
     @ApiProperty({
       description: 'Email do usuario',
       type: String,
-      example: 'shammy@gmail',
+      example: 'usuario@teste.com',
       title: 'Email',
     })
     email: string;
@@ -29,7 +29,7 @@ export class UserRegisterDoc {
     @ApiProperty({
       description: 'Senha',
       type: String,
-      example: '1234',
+      example: 'P@$$w0rd',
       title: 'Password',
     })
     password: string;
