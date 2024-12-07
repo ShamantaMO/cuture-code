@@ -40,7 +40,7 @@ $ npm run test:cov
 ```
 
 # DER
-![Diagram](der.jpg)
+![Diagram](der.png)
 
 ## Endpoints
 
