@@ -1,3 +1,3 @@
 export const updateProductMock = {
-    price: 50,
-}
+  price: 50,
+};

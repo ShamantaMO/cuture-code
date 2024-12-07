@@ -1,19 +1,15 @@
-import { INestApplication, ValidationPipe } from "@nestjs/common";
-import { AuthGuard } from "src/guards/auth.guard";
-import { authGuardMock } from "src/testing/auth/auth-guard.mock";
-import { createJewelsMock } from "src/testing/jewels/create-jewels.mock";
-import { jewelsRepositoryMock } from "src/testing/jewels/jewels-repository.mock";
-import { jewelsMock } from "src/testing/jewels/jewels.mock";
-import { updateJewelsMock } from "src/testing/jewels/update-jewels.mock";
-import { userRepositoryMock } from "src/testing/user/user-repository.mock";
-import { usersMock } from "src/testing/users.mock";
-import { JewelsModule } from "./jewels.module";
-import { Test, TestingModule } from "@nestjs/testing";
+import { INestApplication, ValidationPipe } from '@nestjs/common';
+import { AuthGuard } from 'src/guards/auth.guard';
+import { authGuardMock } from 'src/testing/auth/auth-guard.mock';
+import { createJewelsMock } from 'src/testing/jewels/create-jewels.mock';
+import { jewelsRepositoryMock } from 'src/testing/jewels/jewels-repository.mock';
+import { jewelsMock } from 'src/testing/jewels/jewels.mock';
+import { updateJewelsMock } from 'src/testing/jewels/update-jewels.mock';
+import { userRepositoryMock } from 'src/testing/user/user-repository.mock';
+import { usersMock } from 'src/testing/users.mock';
+import { JewelsModule } from './jewels.module';
+import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
-
-
-
-
 
 describe('Módulo de Joias', () => {
   let app: INestApplication;
@@ -46,10 +42,12 @@ describe('Módulo de Joias', () => {
 
   describe('Criar', () => {
     it('criar uma joia', async () => {
-      jest.spyOn(jewelsRepositoryMock.useValue, 'findOne').mockResolvedValue(null);
+      jest
+        .spyOn(jewelsRepositoryMock.useValue, 'findOne')
+        .mockResolvedValue(null);
       const response = await request(app.getHttpServer())
-      .post('/jewels/create')
-      .send(createJewelsMock);
+        .post('/jewels/create')
+        .send(createJewelsMock);
 
       expect(response.statusCode).toEqual(201);
       expect(response.body['active']).toEqual(true);
@@ -58,9 +56,13 @@ describe('Módulo de Joias', () => {
     it('distribuir joias', async () => {
       userRepositoryMock.useValue.findOne.mockResolvedValueOnce(usersMock[0]);
 
-      jewelsRepositoryMock.useValue.findOne.mockResolvedValueOnce(jewelsMock[1]);
+      jewelsRepositoryMock.useValue.findOne.mockResolvedValueOnce(
+        jewelsMock[1],
+      );
 
-      const response = await request(app.getHttpServer()).post(`/jewels/assign/${usersMock[0].id}/jewels/${jewelsMock[1].id}`);
+      const response = await request(app.getHttpServer()).post(
+        `/jewels/assign/${usersMock[0].id}/jewels/${jewelsMock[1].id}`,
+      );
 
       console.log('Erro', response.error);
       console.log('Código de Status', response.statusCode);
@@ -82,7 +84,9 @@ describe('Módulo de Joias', () => {
     it('encontrar uma joia pelo ID', async () => {
       jewelsRepositoryMock.useValue.findOne.mockResolvedValue(jewelsMock[1]);
 
-      const response = await request(app.getHttpServer()).get(`/jewels/${jewelsMock[1].id}`);
+      const response = await request(app.getHttpServer()).get(
+        `/jewels/${jewelsMock[1].id}`,
+      );
 
       expect(response.statusCode).toEqual(200);
     });
@@ -90,7 +94,9 @@ describe('Módulo de Joias', () => {
 
   describe('Atualizar', () => {
     it('atualizar uma joia', async () => {
-      const response = await request(app.getHttpServer()).patch(`/jewels/${jewelsMock[4].id}`).send(updateJewelsMock);
+      const response = await request(app.getHttpServer())
+        .patch(`/jewels/${jewelsMock[4].id}`)
+        .send(updateJewelsMock);
 
       console.log('Erro', response.error);
       console.log('Código de Status', response.statusCode);

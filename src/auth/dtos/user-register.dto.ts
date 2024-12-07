@@ -1,32 +1,35 @@
-import { IsEmail, isIn, IsInt, isInt, IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { RoleEnum } from "src/enum/role.enum";
-import internal from "stream";
+import {
+  IsEmail,
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+import { RoleEnum } from 'src/enum/role.enum';
 
 
+export class userRegisterDto {
+  @IsString()
+  @IsNotEmpty()
+  firstName: string;
 
-export class userRegisterDto{
+  @IsString()
+  @IsOptional()
+  lastName: string;
 
-   @IsString()
-   @IsNotEmpty()
-   firstName: string
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
 
-   @IsString()
-   @IsOptional()
-   lastName: string
+  @IsInt()
+  @IsOptional()
+  coins: number;
 
-   @IsEmail()
-   @IsNotEmpty()
-   email: string
+  @IsString()
+  @IsNotEmpty()
+  password: string;
 
-   @IsInt()
-   @IsOptional()
-   coins: number
-
-   @IsString()
-   @IsNotEmpty()
-   password: string
-
-   @IsString()
-   @IsOptional()
-   role?: RoleEnum   
+  @IsString()
+  @IsOptional()
+  role?: RoleEnum;
 }

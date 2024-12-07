@@ -1,3 +1,3 @@
 export const updateUserMock = {
-    email: 'so@gmail.com'
-}
+  email: 'so@gmail.com',
+};

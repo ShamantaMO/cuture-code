@@ -1,11 +1,16 @@
-import { Injectable, NotFoundException, UnauthorizedException, HttpException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+  HttpException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { UsersDecoratorDTO } from './dtos/users-decorator.dto';
 import { UpdateUsersDto } from './dtos/updateUsers.dto';
 import { RoleEnum } from 'src/enum/role.enum';
 import * as bcrypt from 'bcrypt';
+import { User } from 'src/entities/users.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UsersService {
@@ -14,7 +19,6 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  
   async findByEmail(email: string) {
     try {
       return this.usersRepository.findOne({
@@ -27,7 +31,6 @@ export class UsersService {
     }
   }
 
-  
   async findById(id: number) {
     try {
       const user = await this.usersRepository.findOne({ where: { id } });
@@ -43,7 +46,6 @@ export class UsersService {
     }
   }
 
-  
   async findAll() {
     try {
       return await this.usersRepository.find();
@@ -53,7 +55,6 @@ export class UsersService {
     }
   }
 
-  
   async userById(id: number) {
     try {
       await this.findById(id);
@@ -69,7 +70,6 @@ export class UsersService {
     }
   }
 
-  
   async profile(user: UsersDecoratorDTO) {
     try {
       return await this.usersRepository.findOne({
@@ -82,10 +82,12 @@ export class UsersService {
     }
   }
 
-  
   async update(id: number, body: UpdateUsersDto, user: UsersDecoratorDTO) {
     try {
-      await this.usersRepository.findOne({ where: { id }, select: { id: true } });
+      await this.usersRepository.findOne({
+        where: { id },
+        select: { id: true },
+      });
 
       if (user.userRole !== RoleEnum.admin && user.userId !== Number(id)) {
         throw new UnauthorizedException(
@@ -93,10 +95,10 @@ export class UsersService {
         );
       }
 
-      const saltRounds = 10; 
+      const saltRounds = 10;
       body.password = await bcrypt.hash(body.password, saltRounds);
       const newUser = this.usersRepository.create(body);
-      
+
       await this.usersRepository.update(id, body);
 
       return await this.usersRepository.findOneBy({ id });
@@ -106,10 +108,12 @@ export class UsersService {
     }
   }
 
-  
   async delete(id: number, user: UsersDecoratorDTO) {
     try {
-      await this.usersRepository.findOne({ where: { id }, select: { id: true } });
+      await this.usersRepository.findOne({
+        where: { id },
+        select: { id: true },
+      });
 
       if (user.userRole !== RoleEnum.admin && user.userId !== id) {
         throw new UnauthorizedException(

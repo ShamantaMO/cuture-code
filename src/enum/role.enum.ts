@@ -1,4 +1,4 @@
-export enum RoleEnum{
-    admin= 'admin',
-    user= 'user'
+export enum RoleEnum {
+  admin = 'admin',
+  user = 'user',
 }

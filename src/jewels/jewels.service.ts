@@ -1,9 +1,15 @@
-import { BadRequestException, HttpException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { UpdateJewelsDto } from './dtos/update-jewels.dto';
 import { CreateJewelsDto } from './dtos/create-jewels.dto';
-import { Jewels, User } from 'src/entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Jewels } from 'src/entities/jewels.entity';
+import { User } from 'src/entities/users.entity';
 
 @Injectable()
 export class JewelsService {
@@ -20,15 +26,15 @@ export class JewelsService {
         throw new BadRequestException('Esta joia já existe');
       }
 
-      console.log('---------------------------------------------------------')
-      console.log('salvando joia')
-      console.log(body)
+      console.log('---------------------------------------------------------');
+      console.log('salvando joia');
+      console.log(body);
 
       const newJewel = this.jewelsRepository.create(body);
 
-      console.log(newJewel)
-      console.log('---------------------------------------------------------')
-      
+      console.log(newJewel);
+      console.log('---------------------------------------------------------');
+
       await this.jewelsRepository.save(newJewel);
 
       return newJewel;
@@ -42,7 +48,13 @@ export class JewelsService {
     try {
       const user = await this.usersRepository.findOne({
         where: { id: userId },
-        select: { id: true, firstName: true, role: true, email: true, coins: true },
+        select: {
+          id: true,
+          firstName: true,
+          role: true,
+          email: true,
+          coins: true,
+        },
         relations: { jewels: true },
       });
 
@@ -68,7 +80,7 @@ export class JewelsService {
       await this.usersRepository.save({
         ...user,
         coins: user.coins + jewel.price,
-        jewels: userUpdate.map(j => ({ id: j.id })),
+        jewels: userUpdate.map((j) => ({ id: j.id })),
       });
 
       await this.jewelsRepository.save({
@@ -89,7 +101,9 @@ export class JewelsService {
       const jewel = await this.jewelsRepository.findOne({ where: { id } });
 
       if (!jewel) {
-        throw new NotFoundException(`Essa joia com o ID: ${id} não foi encontrada!`);
+        throw new NotFoundException(
+          `Essa joia com o ID: ${id} não foi encontrada!`,
+        );
       }
 
       return jewel;
@@ -119,13 +133,13 @@ export class JewelsService {
 
   async update(id: number, body: UpdateJewelsDto) {
     try {
-      const jewel =  await this.jewelById(id);
+      const jewel = await this.jewelById(id);
 
-      Object.assign(jewel, body)
+      Object.assign(jewel, body);
 
-      await this.jewelsRepository.save(jewel)
+      await this.jewelsRepository.save(jewel);
 
-      return jewel
+      return jewel;
     } catch (error) {
       console.error(error);
       throw new HttpException(error.message, error.status);

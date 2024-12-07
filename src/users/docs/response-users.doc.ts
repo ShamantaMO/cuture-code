@@ -1,6 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { RoleEnum } from "src/enum/role.enum";
-
+import { ApiProperty } from '@nestjs/swagger';
+import { RoleEnum } from 'src/enum/role.enum';
 
 export class ResponseUserDoc {
   @ApiProperty({

@@ -1,3 +1,3 @@
-export enum CategoryEnum{
-    tech = 'Technology'
+export enum CategoryEnum {
+  tech = 'Technology',
 }

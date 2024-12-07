@@ -1,6 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { CreateProductDoc } from "./create-products.doc";
-
+import { ApiProperty } from '@nestjs/swagger';
+import { CreateProductDoc } from './create-products.doc';
 
 export class ResponseCreateProductDoc extends CreateProductDoc {
   @ApiProperty({

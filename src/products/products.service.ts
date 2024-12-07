@@ -21,18 +21,17 @@ export class ProductsService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-
   async create(body: CreateProdutsDto) {
     if (await this.findName(body.name)) {
       throw new BadRequestException('Produto já existe');
     }
-    console.log('---------------------------------------------------------')
-    console.log('criando produto')
-    console.log(body)
-    
+    console.log('---------------------------------------------------------');
+    console.log('criando produto');
+    console.log(body);
+
     const newProduct = this.productsRepository.create(body);
 
-    console.log(newProduct)
+    console.log(newProduct);
     try {
       return await this.productsRepository.save(newProduct);
     } catch (error) {
@@ -41,7 +40,6 @@ export class ProductsService {
     }
   }
 
-  
   async reward(productId: number, userDeco: UsersDecoratorDTO) {
     const product = await this.productsRepository.findOne({
       where: { id: productId, inStock: true },
@@ -64,7 +62,9 @@ export class ProductsService {
     }
 
     if (user.coins < product.price) {
-      throw new BadRequestException('Moedas insuficientes para comprar o produto');
+      throw new BadRequestException(
+        'Moedas insuficientes para comprar o produto',
+      );
     }
 
     user.coins -= product.price;
@@ -83,7 +83,6 @@ export class ProductsService {
     }
   }
 
-  
   async productById(id: number) {
     const product = await this.productsRepository.findOne({ where: { id } });
 
@@ -94,18 +93,19 @@ export class ProductsService {
     return product;
   }
 
-  
   async findName(name: string) {
     return this.productsRepository.findOne({ where: { name } });
   }
 
-  
   async update(id: number, body: UpdateProductsDto) {
     const product = await this.productById(id);
 
     try {
       await this.productsRepository.update(id, body);
-      return { message: 'Produto atualizado com sucesso', product: { ...product, ...body } };
+      return {
+        message: 'Produto atualizado com sucesso',
+        product: { ...product, ...body },
+      };
     } catch (error) {
       console.error(error);
       throw new HttpException('Falha ao atualizar o produto', 500);

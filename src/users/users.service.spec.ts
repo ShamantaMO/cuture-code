@@ -1,8 +1,8 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { UsersService } from "./users.service";
-import { updateUserMock } from "src/testing/user/update-user.mock";
-import { userDecoratorMock } from "src/testing/user/user-decorator.mock";
-import { userRepositoryMock } from "src/testing/user/user-repository.mock";
+import { Test, TestingModule } from '@nestjs/testing';
+import { UsersService } from './users.service';
+import { updateUserMock } from 'src/testing/user/update-user.mock';
+import { userDecoratorMock } from 'src/testing/user/user-decorator.mock';
+import { userRepositoryMock } from 'src/testing/user/user-repository.mock';
 
 describe('UserService', () => {
   let userService: UsersService;
@@ -50,16 +50,16 @@ describe('UserService', () => {
   });
 
   describe('Update', () => {
-      it('Deveria ser possível atualizar o usuário', async () => {
-        const user = await userService.update(
-          3,
-          updateUserMock,
-          userDecoratorMock,
-        );
-  
-        expect(user.email).toEqual(updateUserMock.email);
-        expect(user.deleteAt).toBeNull();
-      });  
+    it('Deveria ser possível atualizar o usuário', async () => {
+      const user = await userService.update(
+        3,
+        updateUserMock,
+        userDecoratorMock,
+      );
+
+      expect(user.email).toEqual(updateUserMock.email);
+      expect(user.deleteAt).toBeNull();
+    });
   });
 
   describe('Delete', () => {

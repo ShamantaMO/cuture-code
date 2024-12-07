@@ -1,5 +1,4 @@
-import { RoleEnum } from "src/enum/role.enum";
-
+import { RoleEnum } from 'src/enum/role.enum';
 
 export const userDecoratorMock = {
   userId: 2,

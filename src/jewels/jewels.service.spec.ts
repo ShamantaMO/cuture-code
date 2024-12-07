@@ -17,24 +17,24 @@ describe('JewelsService', () => {
     jewelsService = module.get<JewelsService>(JewelsService);
   });
 
-  it('deve estar definido', () => {
+  it('should be defined', () => {
     expect(jewelsService).toBeDefined();
   });
 
-  describe('Criar', () => {
-    it('deve criar uma joia', async () => {
+  describe('Create', () => {
+    it('should be create jewels', async () => {
       jest.spyOn(jewelsService, 'findJewel').mockResolvedValueOnce(null);
       const jewel = await jewelsService.create(createJewelsMock);
 
       expect(jewel).toHaveProperty('id');
     });
 
-    it('deve distribuir joias', async () => {
+    it('should be distribuite jewels', async () => {
       const mockUser = {
         id: 2,
-        firstName: 'Thiago',
-        lastName: 'Coelho',
-        email: 'thiago.coelho@teste.com.br',
+        firstName: 'Shamanta',
+        lastName: 'Oliveira',
+        email: 'shamanta.oliveira@test.com',
         password: '1234',
         role: 'user',
         emailVerified: true,
@@ -76,34 +76,34 @@ describe('JewelsService', () => {
     });
   });
 
-  describe('Ler', () => {
-    it('encontrar uma joia pelo ID', async () => {
+  describe('Read', () => {
+    it('should be find jewel by id', async () => {
       const jewel = await jewelsService.jewelById(2);
 
       expect(jewel.name).toContain('Team Catalyst');
     });
 
-    it('encontrar todas as joias', async () => {
+    it('should be find all jewels', async () => {
       const jewels = await jewelsService.findAll();
 
       expect(jewels.length).toBeGreaterThan(0);
     });
 
-    it('encontrar uma joia pelo nome', async () => {
+    it('should be find jewel by name', async () => {
       const jewel = await jewelsService.findJewel('Team Catalyst');
 
       expect(jewel).toHaveProperty('id');
     });
   });
 
-  describe('Atualizar', () => {
-    it('atualizar uma joia', async () => {
+  describe('Update', () => {
+    it('should be update jewel', async () => {
       jewelsRepositoryMock.useValue.findOne.mockResolvedValue(
         jewelsMock[3],
       );
 
-      const jewel = await jewelsService.update(9, updateJewelsMock);
-      expect(jewel.active).toEqual(updateJewelsMock.active);
-    });
+      const jewel = await jewelsService.update(9, updateJewelsMock)
+      expect(jewel.active).toEqual(updateJewelsMock.active)
   });
-});
+  })}
+)

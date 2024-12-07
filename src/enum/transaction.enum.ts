@@ -1,6 +1,6 @@
-export enum TransactionEnum{
-    Gift = "gift",
-    Reward = "reward",
-    Purchase = "purchase",
-    Deduction = "deduction"
+export enum TransactionEnum {
+  Gift = 'gift',
+  Reward = 'reward',
+  Purchase = 'purchase',
+  Deduction = 'deduction',
 }

@@ -9,12 +9,12 @@ import { Product, User } from 'src/entities';
 
 
 @Module({
-    imports: [
-      JwtModule.registerAsync({...jwtConfig, global: true}),
-      TypeOrmModule.forFeature([User,Product]),
-      UsersModule
-    ],
-    controllers: [AuthController],
-    providers: [AuthService],
-  })
-  export class AuthModule {}
+  imports: [
+    JwtModule.registerAsync({ ...jwtConfig, global: true }),
+    TypeOrmModule.forFeature([User, Product]),
+    UsersModule,
+  ],
+  controllers: [AuthController],
+  providers: [AuthService],
+})
+export class AuthModule {}

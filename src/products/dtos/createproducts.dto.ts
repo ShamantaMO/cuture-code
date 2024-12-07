@@ -1,21 +1,26 @@
-import { IsBoolean, IsEnum, IsNotEmpty, IsNumber, IsString } from "class-validator"
-import { CategoryEnum } from "src/enum/category.enum"
+import {
+  IsBoolean,
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
+import { CategoryEnum } from 'src/enum/category.enum';
 
-export class CreateProdutsDto{
-    @IsString()
-    @IsNotEmpty()
-    name: string
+export class CreateProdutsDto {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
 
-    @IsNumber()
-    @IsNotEmpty()
-    price: number
+  @IsNumber()
+  @IsNotEmpty()
+  price: number;
 
-    @IsEnum(CategoryEnum)
-    @IsNotEmpty()
-    category: CategoryEnum
+  @IsEnum(CategoryEnum)
+  @IsNotEmpty()
+  category: CategoryEnum;
 
-    @IsBoolean()
-    @IsNotEmpty()
-    inStock: boolean
-
+  @IsBoolean()
+  @IsNotEmpty()
+  inStock: boolean;
 }
