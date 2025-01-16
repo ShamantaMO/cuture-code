@@ -62,7 +62,7 @@ export class ProductsController {
   }
 
   @ApiParam({type: Number, example: 3, name: 'id'})
-  @ApiOkResponse({example: {message: 'Produto deletado'}})
+  @ApiOkResponse({example: {message: 'Produto excluído'}})
   @ApiForbiddenResponse({example: {message: "Token não encontrado"}})
   @ApiNotFoundResponse({example: `Este produto com o ID: 3 não foi encontrado ou está sem estoque`})
   @Roles(RoleEnum.admin)

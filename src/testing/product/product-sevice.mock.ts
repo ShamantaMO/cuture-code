@@ -10,6 +10,6 @@ export const productServiceMock = {
         reward: jest.fn().mockResolvedValue({message: 'Produto comprado com sucesso'}),
         productById: jest.fn().mockResolvedValue(productsMock[2]),
         update: jest.fn().mockResolvedValue({...productsMock[1], ...updateProductMock}),
-        delete: jest.fn().mockResolvedValue({message: 'Produto deletado'}),
+        delete: jest.fn().mockResolvedValue({message: 'Produto excluído com sucesso'}),
     }
 }

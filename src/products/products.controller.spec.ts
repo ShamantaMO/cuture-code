@@ -49,12 +49,13 @@ describe('ProductsController', () => {
   });
 
   describe('Ler', () => {
+    const productId = 4;
     it('encontrar um produto pelo ID', async () => {
-      const product = await productController.productById(4);
+      const product = await productController.productById(productId);
 
       console.log('Produto pelo ID', product);
 
-      expect(product.name).toEqual('Standing Desk Converter');
+      expect(product.name).toEqual('Wireless Keyboard');
       expect(product.deleteAt).toBeNull();
     });
   });
@@ -70,12 +71,13 @@ describe('ProductsController', () => {
   });
 
   describe('Excluir', () => {
+    const productId = 8;
     it('excluir um produto', async () => {
-      const product = await productController.delete(8);
+      const product = await productController.delete(productId);
 
       console.log('Excluir', product);
 
-      expect(product.message).toEqual('Produto excluído');
+      expect(product.message).toEqual('Produto excluído com sucesso');
     });
   });
 });
