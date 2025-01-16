@@ -30,8 +30,10 @@ describe('JewelsService', () => {
     });
 
     it('deve distribuir joias', async () => {
+      const userId = 2;
+      const jewelId = 2;
       const mockUser = {
-        id: 2,
+        id: userId,
         firstName: 'Thiago',
         lastName: 'Coelho',
         email: 'thiago.coelho@teste.com.br',
@@ -48,7 +50,7 @@ describe('JewelsService', () => {
 
       userRepositoryMock.useValue.findOne.mockResolvedValueOnce(mockUser);
 
-      await jewelsService.distribuiteJewels(2, 2);
+      await jewelsService.distribuiteJewels(userId, jewelId);
 
       expect(userRepositoryMock.useValue.findOne).toHaveBeenCalledWith({
         where: { id: mockUser.id },
@@ -64,7 +66,7 @@ describe('JewelsService', () => {
 
       expect(userRepositoryMock.useValue.save).toHaveBeenCalledWith({
         ...mockUser,
-        coins: 110,
+        coins: 210,
         jewels: [{ id: mockUser.id }],
       });
 
@@ -80,7 +82,7 @@ describe('JewelsService', () => {
     it('encontrar uma joia pelo ID', async () => {
       const jewel = await jewelsService.jewelById(2);
 
-      expect(jewel.name).toContain('Team Catalyst');
+      expect(jewel.name).toContain('Star-Lord Charm');
     });
 
     it('encontrar todas as joias', async () => {

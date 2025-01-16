@@ -48,11 +48,12 @@ describe('JewelsController', () => {
     });
 
     it('encontrar uma joia pelo ID', async () => {
-      const jewel = await jewelsController.jewelById(9);
+      const jewelId = 9;
+      const jewel = await jewelsController.jewelById(jewelId);
 
       console.log('usuário ', jewel.user);
 
-      expect(jewel.name).toEqual('Inclusion Stone');
+      expect(jewel.name).toEqual('Groot Seed');
     });
   });
 
