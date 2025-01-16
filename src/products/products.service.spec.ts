@@ -1,10 +1,10 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { ProductsService } from "./products.service";
-import { userDecoratorMock } from "src/testing/user/user-decorator.mock";
-import { productsRepositoryMock } from "src/testing/product/products-repository.mock";
-import { userRepositoryMock } from "src/testing/user/user-repository.mock";
-import { createProductMock } from "src/testing/product/create-product.mock";
-import { updateProductMock } from "src/testing/product/update-product.mock";
+import { userDecoratorMock } from "../testing/user/user-decorator.mock";
+import { productsRepositoryMock } from "../testing/product/products-repository.mock";
+import { userRepositoryMock } from "../testing/user/user-repository.mock";
+import { createProductMock } from "../testing/product/create-product.mock";
+import { updateProductMock } from "../testing/product/update-product.mock";
 
 describe('ProductsService', () => {
   let productService: ProductsService;

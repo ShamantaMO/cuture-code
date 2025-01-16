@@ -1,4 +1,4 @@
-import { RoleEnum } from "src/enum/role.enum";
+import { RoleEnum } from "../enum/role.enum";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Jewels } from "./jewels.entity";
 import { Product } from "./products.entity";

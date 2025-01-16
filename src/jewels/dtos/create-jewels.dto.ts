@@ -1,5 +1,5 @@
 import { IsBoolean, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator"
-import { TransactionEnum } from "src/enum/transaction.enum"
+import { TransactionEnum } from "../../enum/transaction.enum"
 
 export class CreateJewelsDto{
     @IsString()

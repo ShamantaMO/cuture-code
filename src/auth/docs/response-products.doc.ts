@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { CategoryEnum } from "src/enum/category.enum";
-
+import { CategoryEnum } from "../../enum/category.enum";
 
 export class ResponseProductDoc {
   @ApiProperty({

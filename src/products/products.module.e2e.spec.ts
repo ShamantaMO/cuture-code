@@ -1,13 +1,13 @@
 import { INestApplication, ValidationPipe } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
 import { ProductsModule } from "./products.module";
-import { productsRepositoryMock } from "src/testing/product/products-repository.mock";
-import { userRepositoryMock } from "src/testing/user/user-repository.mock";
-import { AuthGuard } from "src/guards/auth.guard";
-import { authGuardMock } from "src/testing/auth/auth-guard.mock";
-import { createProductMock } from "src/testing/product/create-product.mock";
-import { productsMock } from "src/testing/product/products-mock";
-import { updateProductMock } from "src/testing/product/update-product.mock";
+import { productsRepositoryMock } from "../testing/product/products-repository.mock";
+import { userRepositoryMock } from "../testing/user/user-repository.mock";
+import { AuthGuard } from "../guards/auth.guard";
+import { authGuardMock } from "../testing/auth/auth-guard.mock";
+import { createProductMock } from "../testing/product/create-product.mock";
+import { productsMock } from "../testing/product/products-mock";
+import { updateProductMock } from "../testing/product/update-product.mock";
 import * as request from 'supertest'
 
 

@@ -1,4 +1,4 @@
-import { TransactionEnum } from "src/enum/transaction.enum";
+import { TransactionEnum } from "../../enum/transaction.enum";
 
 export const responseCreateJewelsMock = {
     id: 10,

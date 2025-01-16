@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { TransactionEnum } from "src/enum/transaction.enum";
+import { TransactionEnum } from "../../enum/transaction.enum";
 
 export class ResponseDistribuiteJewelsDoc {
 

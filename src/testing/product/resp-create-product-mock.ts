@@ -1,4 +1,4 @@
-import { CategoryEnum } from "src/enum/category.enum";
+import { CategoryEnum } from "../../enum/category.enum";
 
 export const responseCreateProductMock = {
     id: 1,

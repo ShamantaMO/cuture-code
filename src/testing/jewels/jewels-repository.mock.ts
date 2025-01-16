@@ -1,5 +1,5 @@
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { Jewels } from "src/entities";
+import { Jewels } from "../../entities";
 import { responseCreateJewelsMock } from "./resp-create-jewels.mock";
 import { jewelsMock } from "./jewels.mock";
 import { updateJewelsMock } from "./update-jewels.mock";

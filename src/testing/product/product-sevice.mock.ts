@@ -1,4 +1,4 @@
-import { ProductsService } from "src/products/products.service";
+import { ProductsService } from "../../products/products.service";
 import { responseCreateProductMock } from "./resp-create-product-mock";
 import { productsMock } from "./products-mock";
 import { updateProductMock } from "./update-product.mock";

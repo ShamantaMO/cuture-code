@@ -7,9 +7,9 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateProductsDto } from './dtos/update-products.dto';
-import { UsersDecoratorDTO } from 'src/users/dtos/users-decorator.dto';
+import { UsersDecoratorDTO } from '../users/dtos/users-decorator.dto';
 import { CreateProdutsDto } from './dtos/createproducts.dto';
-import { Product, User } from 'src/entities';
+import { Product, User } from '../entities';
 
 
 @Injectable()

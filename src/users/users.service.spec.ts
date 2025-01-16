@@ -1,8 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { UsersService } from "./users.service";
-import { updateUserMock } from "src/testing/user/update-user.mock";
-import { userDecoratorMock } from "src/testing/user/user-decorator.mock";
-import { userRepositoryMock } from "src/testing/user/user-repository.mock";
+import { updateUserMock } from "../testing/user/update-user.mock";
+import { userDecoratorMock } from "../testing/user/user-decorator.mock";
+import { userRepositoryMock } from "../testing/user/user-repository.mock";
 
 describe('UserService', () => {
   let userService: UsersService;

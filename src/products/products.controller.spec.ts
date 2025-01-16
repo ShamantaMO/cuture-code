@@ -1,11 +1,11 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { ProductsController } from "./products.controller";
-import { productServiceMock } from "src/testing/product/product-sevice.mock";
-import { AuthGuard } from "src/guards/auth.guard";
-import { authGuardMock } from "src/testing/auth/auth-guard.mock";
-import { createProductMock } from "src/testing/product/create-product.mock";
-import { userDecoratorMock } from "src/testing/user/user-decorator.mock";
-import { updateProductMock } from "src/testing/product/update-product.mock";
+import { productServiceMock } from "../testing/product/product-sevice.mock";
+import { AuthGuard } from "../guards/auth.guard";
+import { authGuardMock } from "../testing/auth/auth-guard.mock";
+import { createProductMock } from "../testing/product/create-product.mock";
+import { userDecoratorMock } from "../testing/user/user-decorator.mock";
+import { updateProductMock } from "../testing/product/update-product.mock";
 
 describe('ProductsController', () => {
   let productController: ProductsController;

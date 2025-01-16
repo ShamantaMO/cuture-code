@@ -1,4 +1,4 @@
-import { JewelsService } from "src/jewels/jewels.service";
+import { JewelsService } from "../../jewels/jewels.service";
 import { responseDistribuiteJewelsMock } from "./resp-distribuite-jewels.mock";
 import { jewelsMock } from "./jewels.mock";
 import { updateJewelsMock } from "./update-jewels.mock";

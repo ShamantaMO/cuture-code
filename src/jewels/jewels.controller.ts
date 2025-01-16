@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { UpdateJewelsDto } from './dtos/update-jewels.dto';
-import { Roles } from 'src/enum/role.decorator';
-import { RoleEnum } from 'src/enum/role.enum';
+import { Roles } from '../enum/role.decorator';
+import { RoleEnum } from '../enum/role.enum';
 import { ApiBadRequestResponse, ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiForbiddenResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, ApiTags } from '@nestjs/swagger';
 import { ResponseCreateJewelsDoc } from './docs/resp-create-jewels.doc';
 import { UpdateJewelsDoc } from './docs/update-jewels.doc';
@@ -9,8 +9,8 @@ import { CreateJewelsDto } from './dtos/create-jewels.dto';
 import { CreateJewelsDoc } from './docs/create-jewels.doc';
 import { ResponseDistribuiteJewelsDoc } from './docs/resp-distribuite-jewels.doc';
 import { JewelsService } from './jewels.service';
-import { RolesGuard } from 'src/guards/role.guard';
-import { AuthGuard } from 'src/guards/auth.guard';
+import { RolesGuard } from '../guards/role.guard';
+import { AuthGuard } from '../guards/auth.guard';
 
 @ApiBearerAuth()
 @ApiTags('Jewels')

@@ -1,8 +1,5 @@
-import { IsEmail, isIn, IsInt, isInt, IsNotEmpty, IsOptional, IsString } from "class-validator";
-import { RoleEnum } from "src/enum/role.enum";
-import internal from "stream";
-
-
+import { IsEmail, IsInt, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { RoleEnum } from "../../enum/role.enum";
 
 export class userRegisterDto{
 

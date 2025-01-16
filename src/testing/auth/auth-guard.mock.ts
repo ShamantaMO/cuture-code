@@ -1,5 +1,5 @@
 import { CanActivate, ExecutionContext } from "@nestjs/common"
-import { RoleEnum } from "src/enum/role.enum"
+import { RoleEnum } from "../../enum/role.enum"
 
 export const authGuardMock: CanActivate = {
     canActivate: jest.fn((context: ExecutionContext) =>{

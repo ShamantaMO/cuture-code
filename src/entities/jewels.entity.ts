@@ -1,5 +1,5 @@
-import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { TransactionEnum } from "src/enum/transaction.enum";
+import { Column, CreateDateColumn, Entity, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { TransactionEnum } from "../enum/transaction.enum";
 import { User } from "./users.entity";
 
 @Entity()

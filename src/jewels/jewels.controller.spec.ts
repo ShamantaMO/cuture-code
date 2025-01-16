@@ -1,10 +1,11 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { JewelsController } from "./jewels.controller";
-import { jewelsServiceMock } from "src/testing/jewels/jewels-service.mock";
-import { AuthGuard } from "src/guards/auth.guard";
-import { authGuardMock } from "src/testing/auth/auth-guard.mock";
-import { createJewelsMock } from "src/testing/jewels/create-jewels.mock";
-import { updateJewelsMock } from "src/testing/jewels/update-jewels.mock";
+import { jewelsServiceMock } from "../testing/jewels/jewels-service.mock";
+import { AuthGuard } from "../guards/auth.guard";
+import { authGuardMock } from "../testing/auth/auth-guard.mock";
+import { createJewelsMock } from "../testing/jewels/create-jewels.mock";
+import { updateJewelsMock } from "../testing/jewels/update-jewels.mock";
+
 
 describe('JewelsController', () => {
   let jewelsController: JewelsController;

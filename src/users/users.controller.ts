@@ -17,15 +17,15 @@ import {
   ApiTags, 
   ApiUnauthorizedResponse 
 } from "@nestjs/swagger";
-import { AuthGuard } from "src/guards/auth.guard";
-import { RolesGuard } from "src/guards/role.guard";
+import { AuthGuard } from "../guards/auth.guard";
+import { RolesGuard } from "../guards/role.guard";
 import { UsersService } from "./users.service";
 import { UsersDecorator } from "./users-decorator";
 import { UsersDecoratorDTO } from "./dtos/users-decorator.dto";
 import { UserRelationsDoc } from "./docs/users-relations.doc";
 import { ResponseUserDoc } from "./docs/response-users.doc";
-import { RoleEnum } from "src/enum/role.enum";
-import { Roles } from "src/enum/role.decorator";
+import { RoleEnum } from "../enum/role.enum";
+import { Roles } from "../enum/role.decorator";
 import { UpdateUserDoc } from "./docs/update-users.doc";
 import { UpdateUsersDto } from "./dtos/updateUsers.dto";
 

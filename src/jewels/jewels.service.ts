@@ -1,7 +1,7 @@
 import { BadRequestException, HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateJewelsDto } from './dtos/update-jewels.dto';
 import { CreateJewelsDto } from './dtos/create-jewels.dto';
-import { Jewels, User } from 'src/entities';
+import { Jewels, User } from '../entities';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 

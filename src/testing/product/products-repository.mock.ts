@@ -1,5 +1,5 @@
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { Product } from "src/entities";
+import { Product } from "../../entities";
 import { responseCreateProductMock } from "./resp-create-product-mock";
 import { productsMock } from "./products-mock";
 import { updateProductMock } from "./update-product.mock";

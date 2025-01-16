@@ -7,7 +7,8 @@ import { ProductsModule } from "./products/products.module";
 import { JewelsModule } from "./jewels/jewels.module";
 
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal: true}), DatabaseModule, UsersModule, AuthModule, ProductsModule, JewelsModule,
+  imports: [ConfigModule.forRoot({isGlobal: true}), 
+    DatabaseModule, UsersModule, AuthModule, ProductsModule, JewelsModule,
   ],
 })
 export class AppModule {}

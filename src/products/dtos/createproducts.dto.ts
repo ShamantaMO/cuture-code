@@ -1,5 +1,5 @@
 import { IsBoolean, IsEnum, IsNotEmpty, IsNumber, IsString } from "class-validator"
-import { CategoryEnum } from "src/enum/category.enum"
+import { CategoryEnum } from "../../enum/category.enum"
 
 export class CreateProdutsDto{
     @IsString()

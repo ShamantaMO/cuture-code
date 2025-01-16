@@ -1,12 +1,12 @@
 import { INestApplication, ValidationPipe } from "@nestjs/common";
 import { Test, TestingModule } from "@nestjs/testing";
 import { UsersModule } from "./users.module";
-import { userRepositoryMock } from "src/testing/user-repository.mock";
-import { AuthGuard } from "src/guards/auth.guard";
-import { authGuardMock } from "src/testing/auth/auth-guard.mock";
-import { request } from "http";
-import { usersMock } from "src/testing/users.mock";
-import { updateUserMock } from "src/testing/user/update-user.mock";
+import { AuthGuard } from "../guards/auth.guard";
+import { authGuardMock } from "../testing/auth/auth-guard.mock";
+import * as request from 'supertest';
+import { usersMock } from "../testing/users.mock";
+import { updateUserMock } from "../testing/user/update-user.mock";
+import { userRepositoryMock } from "../testing/user/user-repository.mock";
 
 describe('Users Module 2e2', () => {
     let app: INestApplication;
@@ -38,9 +38,8 @@ describe('Users Module 2e2', () => {
     describe('Read', () => {
       it('ver o perfil do usuário', async () => {
         const response = await request(app.getHttpServer())
-          .get('/user/profile')
-          
-  
+          .get('/user/profile');
+
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('email');
       });
