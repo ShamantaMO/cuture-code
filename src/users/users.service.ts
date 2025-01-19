@@ -81,31 +81,35 @@ export class UsersService {
       throw new HttpException(error.message, error.status);
     }
   }
-
-  
   async update(id: number, body: UpdateUsersDto, user: UsersDecoratorDTO) {
     try {
-      await this.usersRepository.findOne({ where: { id }, select: { id: true } });
-
-      if (user.userRole !== RoleEnum.admin && user.userId !== Number(id)) {
+      const userToUpdate = await this.usersRepository.findOne({ where: { id }, select: { id: true } });
+  
+      if (!userToUpdate) {
+        throw new NotFoundException(`Usuário com o id: ${id} não encontrado!`);
+      }
+  
+      if (user.userRole !== RoleEnum.admin && user.userId !== id) {
         throw new UnauthorizedException(
           'Você não tem permissão para atualizar outros usuários.',
         );
       }
-
-      const saltRounds = 10; 
-      body.password = await bcrypt.hash(body.password, saltRounds);
-      const newUser = this.usersRepository.create(body);
-      
+  
+      if (body.password) {
+        const saltRounds = 10;
+        body.password = await bcrypt.hash(body.password, saltRounds);
+      } else {
+        delete body.password; // Remove o campo password se ele não for fornecido.
+      }
+  
       await this.usersRepository.update(id, body);
-
+  
       return await this.usersRepository.findOneBy({ id });
     } catch (error) {
       console.error(error);
-      throw new HttpException(error.message, error.status);
+      throw new HttpException(error.message, error.status || 500);
     }
-  }
-
+  }  
   
   async delete(id: number, user: UsersDecoratorDTO) {
     try {
