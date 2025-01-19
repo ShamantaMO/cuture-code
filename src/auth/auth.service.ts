@@ -25,20 +25,21 @@ export class AuthService {
       if (await this.userService.findByEmail(body.email)) {
         throw new BadRequestException('Usuário já existe');
       }
-
+  
       const saltRounds = 10;
       body.password = await bcrypt.hash(body.password, saltRounds);
       const newUser = this.usersRepository.create(body);
-
+  
       await this.usersRepository.save(newUser);
-
+  
       return newUser;
     } catch (error) {
       console.error(error);
-      throw new HttpException(error.message, error.status);
+      if (error instanceof BadRequestException) throw error;
+      throw new HttpException(error.message, error.status || 500);
     }
   }
-
+  
   async login(body: LoginDto) {
     try {
       console.log('LOGIN');
@@ -47,7 +48,7 @@ export class AuthService {
       if (!user || !(await bcrypt.compare(body.password, user.password))) {
         throw new UnauthorizedException('Credencial invalida');
       }
-
+  
       const tokenPayload = {
         userId: user.id,
         userEmail: user.email,
@@ -55,13 +56,15 @@ export class AuthService {
         iss: 'Culture Code User',
         aud: 'users from Culture Code',
       };
-
+  
       return { access_token: await this.jwtService.signAsync(tokenPayload) };
     } catch (error) {
       console.error(error);
-      throw new HttpException(error.message, error.status);
+      if (error instanceof UnauthorizedException) throw error;
+      throw new HttpException(error.message, error.status || 500);
     }
   }
+  
 
   async findOne(email: string) {
     try {
