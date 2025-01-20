@@ -6,7 +6,7 @@ import { jewelsRepositoryMock } from "../testing/jewels/jewels-repository.mock";
 import { jewelsMock } from "../testing/jewels/jewels.mock";
 import { updateJewelsMock } from "../testing/jewels/update-jewels.mock";
 import { userRepositoryMock } from "../testing/user/user-repository.mock";
-import { usersMock } from "../testing/users.mock";
+import { usersMock } from "../testing/user/users.mock";
 import { JewelsModule } from "./jewels.module";
 import { Test, TestingModule } from "@nestjs/testing";
 import * as request from 'supertest';

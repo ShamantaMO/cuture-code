@@ -26,10 +26,6 @@ export class ProductsService {
     if (await this.findName(body.name)) {
       throw new BadRequestException('Produto já existe');
     }
-    console.log('---------------------------------------------------------')
-    console.log('criando produto')
-    console.log(body)
-    
     const newProduct = this.productsRepository.create(body);
 
     console.log(newProduct)

@@ -4,7 +4,7 @@ import { UsersModule } from "./users.module";
 import { AuthGuard } from "../guards/auth.guard";
 import { authGuardMock } from "../testing/auth/auth-guard.mock";
 import * as request from 'supertest';
-import { usersMock } from "../testing/users.mock";
+import { usersMock } from "../testing/user/users.mock";
 import { updateUserMock } from "../testing/user/update-user.mock";
 import { userRepositoryMock } from "../testing/user/user-repository.mock";
 

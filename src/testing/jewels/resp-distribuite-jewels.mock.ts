@@ -1,4 +1,4 @@
-import { usersMock } from "../users.mock";
+import { usersMock } from "../user/users.mock";
 import { jewelsMock } from "./jewels.mock";
 
 export const responseDistribuiteJewelsMock = {
