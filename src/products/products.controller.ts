@@ -36,7 +36,7 @@ export class ProductsController {
   @ApiForbiddenResponse({example: {message: "Token não encontrado"}})
   @ApiNotFoundResponse({example: `Este produto com o ID: 7 não foi encontrado ou está sem estoque`})
   @ApiBadRequestResponse({example: 'Insufficient jewels'})
-  @Post('reward/:id')
+  @Post(':id/reward')
   async reward(@Param('id' , ParseIntPipe) id: number, @UsersDecorator() userDeco: UsersDecoratorDTO){
     return await this.productsService.reward(id, userDeco)
   }

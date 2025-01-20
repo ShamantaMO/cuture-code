@@ -117,7 +117,7 @@ export class ProductsService {
     const product = await this.productById(id);
 
     try {
-      await this.productsRepository.delete(product.id);
+      await this.productsRepository.softDelete(product.id);
       return { message: 'Produto excluído com sucesso' };
     } catch (error) {
       console.error(error);

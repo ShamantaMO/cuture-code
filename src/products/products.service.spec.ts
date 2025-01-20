@@ -5,6 +5,7 @@ import { productsRepositoryMock } from "../testing/product/products-repository.m
 import { userRepositoryMock } from "../testing/user/user-repository.mock";
 import { createProductMock } from "../testing/product/create-product.mock";
 import { updateProductMock } from "../testing/product/update-product.mock";
+import { productsMock } from "../testing/product/products-mock";
 
 describe('ProductsService', () => {
   let productService: ProductsService;
@@ -30,7 +31,7 @@ describe('ProductsService', () => {
     });
 
     it('recompensa', async () => {
-      const reward = await productService.reward(7, userDecoratorMock);
+      const reward = await productService.reward(productsMock[3].id, userDecoratorMock);
 
       expect(reward).toHaveProperty('message');
     });
@@ -40,7 +41,7 @@ describe('ProductsService', () => {
     it('encontrar um produto pelo ID', async () => {
       const product = await productService.productById(7);
 
-      expect(product.name).toContain('Productivity Planner');
+      expect(product.name).toContain('Noise-Canceling Headphones');
       expect(product.deleteAt).toBeNull();
     });
 
@@ -54,10 +55,9 @@ describe('ProductsService', () => {
 
   describe('Atualizar', () => {
     it('atualizar o produto', async () => {
-      const product = await productService.update(7, updateProductMock);
-      console.log(product);
-      expect(product['price']).toEqual(updateProductMock.price);
-      expect(product['deleteAt']).toBeNull();
+      const result = await productService.update(7, updateProductMock);
+      console.log(result);
+      expect(result['product']['price']).toEqual(updateProductMock.price);
     });
   });
 

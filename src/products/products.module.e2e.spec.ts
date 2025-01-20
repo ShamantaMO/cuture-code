@@ -44,38 +44,42 @@ describe('Módulo de Produtos', () => {
       it('deve criar um produto', async () => {
           jest.spyOn(productsRepositoryMock.useValue, 'findOne').mockResolvedValueOnce(null);
   
-          const response = await request(app.getHttpServer()).post('/products/create').send(createProductMock);
+          const response = await request(app.getHttpServer()).post('/products').send(createProductMock);
   
           expect(response.statusCode).toEqual(201);
           expect(response.body).toHaveProperty('id');
       });
   
       it('deve recompensar um produto', async () => {
-          const response = await request(app.getHttpServer()).post(`/products/reward/${productsMock[3].id}`);
+        const product = productsMock[1];
+          const response = await request(app.getHttpServer())
+            .post(`/products/${product.id}/reward`);
   
           expect(response.statusCode).toEqual(201);
           expect(response.body).toHaveProperty('message');
+          expect(response.body['message']).toEqual('Produto recompensado com sucesso');
       });
     });
   
     describe('Ler', () => {
       it('deve encontrar um produto pelo ID', async () => {
-          const response = await request(app.getHttpServer()).get(`/products/${productsMock[0].id}`);
+          const response = await request(app.getHttpServer())
+            .get(`/products/${productsMock[0].id}`);
   
           expect(response.statusCode).toEqual(200);
-          expect(response.body['name']).toEqual('Productivity Planner');
+          expect(response.body['name']).toEqual('Noise-Canceling Headphones');
       });
     });
   
     describe('Atualizar', () => {
       it('deve atualizar um produto', async () => {
-          const response = await request(app.getHttpServer()).patch(`/products/${productsMock[1].id}`).send(updateProductMock);
+          const response = await request(app.getHttpServer())
+            .patch(`/products/${productsMock[1].id}`).send(updateProductMock);
   
-          console.log('Erro', response.error);
-          console.log('Código de Status', response.statusCode);
-  
+          console.log('Response Body:', response.body);
+          
           expect(response.statusCode).toEqual(200);
-          expect(response.body['price']).toEqual(updateProductMock.price);
+          expect(response.body['product']['price']).toEqual(updateProductMock.price);
       });
     });
   

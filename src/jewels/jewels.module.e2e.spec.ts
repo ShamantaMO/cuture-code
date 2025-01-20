@@ -11,10 +11,6 @@ import { JewelsModule } from "./jewels.module";
 import { Test, TestingModule } from "@nestjs/testing";
 import * as request from 'supertest';
 
-
-
-
-
 describe('Módulo de Joias', () => {
   let app: INestApplication;
 
@@ -32,8 +28,7 @@ describe('Módulo de Joias', () => {
 
     app = module.createNestApplication();
     app.useGlobalPipes(new ValidationPipe());
-
-    app.init();
+    await app.init();
   });
 
   afterAll(async () => {
@@ -48,8 +43,8 @@ describe('Módulo de Joias', () => {
     it('criar uma joia', async () => {
       jest.spyOn(jewelsRepositoryMock.useValue, 'findOne').mockResolvedValue(null);
       const response = await request(app.getHttpServer())
-      .post('/jewels/create')
-      .send(createJewelsMock);
+        .post('/jewels')
+        .send(createJewelsMock);
 
       expect(response.statusCode).toEqual(201);
       expect(response.body['active']).toEqual(true);
@@ -60,7 +55,8 @@ describe('Módulo de Joias', () => {
 
       jewelsRepositoryMock.useValue.findOne.mockResolvedValueOnce(jewelsMock[1]);
 
-      const response = await request(app.getHttpServer()).post(`/jewels/assign/${usersMock[0].id}/jewels/${jewelsMock[1].id}`);
+      const response = await request(app.getHttpServer())
+        .post(`/jewels/assign/${jewelsMock[1].id}/${usersMock[0].id}`);
 
       console.log('Erro', response.error);
       console.log('Código de Status', response.statusCode);

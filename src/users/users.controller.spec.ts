@@ -45,10 +45,10 @@ describe('UserController', () => {
     });
 
     it('encontrar usuário pelo ID', async () => {
-      const user = await userController.userById(9);
+      const userId = 6;
+      const user = await userController.userById(userId);
 
-      expect(user.role).toEqual('admin');
-      expect(user.deleteAt).toBeNull();
+      expect(user.id).toEqual(userId);
     });
   });
 

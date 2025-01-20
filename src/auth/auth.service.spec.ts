@@ -28,7 +28,6 @@ describe('AuthService (unitário)', () => {
   let authService: AuthService;
   let usersService: UsersService;
   let userRepository: Repository<User>;
-  let productRepository: Repository<Product>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -53,7 +52,6 @@ describe('AuthService (unitário)', () => {
     authService = module.get<AuthService>(AuthService);
     usersService = module.get<UsersService>(UsersService);
     userRepository = module.get(getRepositoryToken(User));
-    productRepository = module.get(getRepositoryToken(Product));
   });
 
   afterEach(() => {
