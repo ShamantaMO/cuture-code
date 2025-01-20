@@ -39,9 +39,9 @@ export class ProductsService {
   
   async reward(productId: number, userDeco: UsersDecoratorDTO) {
     const product = await this.productsRepository.findOne({
-      where: { id: productId, inStock: true },
-      relations: ['buyer'],
+      where: { id: productId, inStock: true }
     });
+    console.log(product)
 
     const user = await this.usersRepository.findOne({
       where: { id: userDeco.userId },
