@@ -15,7 +15,7 @@ import { ResponseRewardDoc } from "./docs/response-rewards.doc"
 import { UsersDecoratorDTO } from "../users/dtos/users-decorator.dto"
 import { UpdateProductDoc } from "./docs/update-response.doc"
 import { UpdateProductsDto } from "./dtos/update-products.dto"
-import { ResponseFindAllProductsDoc } from "src/auth/docs/response-allProducts.doc"
+import { ResponseFindAllProductsDoc } from "../auth/docs/response-allProducts.doc"
 
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
