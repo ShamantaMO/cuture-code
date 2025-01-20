@@ -25,7 +25,7 @@ export const productsMock = [
     {
       id: 4,
       name: "Wireless Keyboard",
-      price: 89,
+      price: 12,
       category: "Technology",
       inStock: true,
       createdAt: "2024-11-14 08:57:41.674755",

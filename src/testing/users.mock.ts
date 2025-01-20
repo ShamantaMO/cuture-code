@@ -25,7 +25,7 @@ export const usersMock = [
       createdAt: '2024-11-14 09:20:15.000000',
       updatedAt: '2024-11-14 10:00:00.000000',
       deleteAt: null,
-      coins: 200,
+      coins: 10000,
       productsPurchased: [],
     },
     {

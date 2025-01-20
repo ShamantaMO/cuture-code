@@ -40,7 +40,6 @@ export class ProductsService {
       throw new HttpException('Falha ao criar o produto', 500);
     }
   }
-
   
   async reward(productId: number, userDeco: UsersDecoratorDTO) {
     const product = await this.productsRepository.findOne({

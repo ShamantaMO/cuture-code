@@ -31,7 +31,8 @@ describe('ProductsService', () => {
     });
 
     it('recompensa', async () => {
-      const reward = await productService.reward(productsMock[3].id, userDecoratorMock);
+      const productId = productsMock[2].id;
+      const reward = await productService.reward(productId, userDecoratorMock);
 
       expect(reward).toHaveProperty('message');
     });

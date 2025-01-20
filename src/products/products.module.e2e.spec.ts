@@ -57,7 +57,7 @@ describe('Módulo de Produtos', () => {
   
           expect(response.statusCode).toEqual(201);
           expect(response.body).toHaveProperty('message');
-          expect(response.body['message']).toEqual('Produto recompensado com sucesso');
+          expect(response.body['message']).toEqual('Produto comprado com sucesso');
       });
     });
   
