@@ -5,7 +5,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { UpdateProductsDto } from './dtos/update-products.dto';
 import { UsersDecoratorDTO } from '../users/dtos/users-decorator.dto';
 import { CreateProdutsDto } from './dtos/createproducts.dto';
@@ -107,7 +107,6 @@ export class ProductsService {
     }
   }
 
-  // Exclui um produto
   async delete(id: number) {
     const product = await this.productById(id);
 
@@ -117,6 +116,48 @@ export class ProductsService {
     } catch (error) {
       console.error(error);
       throw new HttpException('Falha ao excluir o produto', 500);
+    }
+  }
+
+  async findAllProducts(
+    page: number,
+    limit: number,
+    price?: number,
+    name?: string,
+  ) {
+    try {
+
+      if(!page || !limit){
+        throw new BadRequestException('Página e limite obrigatórios')
+      }
+      const pageOptions = { skip: (page - 1) * limit, take: limit };
+
+      const products = price
+        ? await this.productsRepository.find({
+            where: { price },
+            ...pageOptions,
+          })
+        : name
+          ? await this.productsRepository.find({
+              where: { name: ILike(`%${name}%`) },
+              ...pageOptions,
+            })
+          : price && name
+            ? await this.productsRepository.find({
+                where: { price, name },
+                ...pageOptions,
+              })
+            : await this.productsRepository.find({ ...pageOptions });
+
+      return {
+        page,
+        limit,
+        total: products.length,
+        data: products,
+      };
+    } catch (error) {
+      console.error(error);
+      throw new HttpException(error.message, error.status);
     }
   }
 }

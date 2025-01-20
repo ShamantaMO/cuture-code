@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from "@nestjs/common"
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, UseGuards } from "@nestjs/common"
 import { ApiBadRequestResponse, ApiBearerAuth, ApiBody, ApiCreatedResponse, 
-  ApiForbiddenResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam } from "@nestjs/swagger"
+  ApiForbiddenResponse, ApiNotFoundResponse, ApiOkResponse, ApiParam, 
+  ApiQuery} from "@nestjs/swagger"
 import { AuthGuard } from "../guards/auth.guard"
 import { RolesGuard } from "../guards/role.guard"
 import { ProductsService } from "./products.service"
@@ -14,6 +15,7 @@ import { ResponseRewardDoc } from "./docs/response-rewards.doc"
 import { UsersDecoratorDTO } from "../users/dtos/users-decorator.dto"
 import { UpdateProductDoc } from "./docs/update-response.doc"
 import { UpdateProductsDto } from "./dtos/update-products.dto"
+import { ResponseFindAllProductsDoc } from "src/auth/docs/response-allProducts.doc"
 
 @ApiBearerAuth()
 @UseGuards(AuthGuard, RolesGuard)
@@ -72,4 +74,19 @@ export class ProductsController {
   }
 
   
+  @ApiQuery({type: Number, example: 24, name: 'price', required: false})
+  @ApiQuery({type: String, example: 'Productivity Planner', name: 'name', required: false})
+  @ApiQuery({type: Number, example: 1, name: 'page'})
+  @ApiQuery({type: Number, example: 10, name: 'limit'})
+  @ApiOkResponse({type: ResponseFindAllProductsDoc})
+  @ApiBadRequestResponse({example: 'página e limite obrigatórios'})
+  @Get('find')
+  async findAllProducts(
+      @Query('page', ParseIntPipe) page = 1,
+      @Query('limit', ParseIntPipe) limit = 10,
+      @Query('price') price: number | undefined = undefined,
+      @Query('name') name: string | undefined = undefined
+  ){
+      return await this.productsService.findAllProducts(page,limit,price,name)
+  }
 }
